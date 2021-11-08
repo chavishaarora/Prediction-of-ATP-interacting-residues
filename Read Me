@@ -1,0 +1,11 @@
+Read Me-
+
+There are 3 files that need to be run in order- 1st, 2nd and 3rd, to generate the result as required.
+
+The 1st file reads the train.data file. A peptide as mentioned in the code decribes the bracket that is being taken in consideration of size 17. 8 X's are added on both side of the protein sequence. Every peptide is desribed by a 17x21 matrix which is then rolled over to create a binary pattern. The binary pattern is classified as interactive or not based on the middle element of the peptide. We thus get 49,307 binary patterns which are then saved as a pkl file by the name 'dataready2.pkl'.
+
+The 2nd file reads the 'dataready2.pkl' file. It converts the data in the numpy format as required in the SVM for its input. 'binary' is a matrix of (49,307 x 357) and 'interactive' is a vector of 49,307. The model is trained with the parameters c=4, gamma=0.0001 and class_weight='balanced' (to get the best accuracy). The test file was the imported and converted into the required binary pattern form, and then tested by our model. The predictions were saved in a file called 'predictions.csv'.
+
+The 3rf file reads 'predictions.csv' and converts the True & False format to +1 & -1 format as required, which is then saved in the file named 'output.csv'.
+
+Warning: Absolute paths are used in the code which will have to be changed.
